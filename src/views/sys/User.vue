@@ -167,8 +167,8 @@
             }
         },
         methods: {
-            getRoleTree(){
-                this.$axios.get("/sys/role/list").then(res =>{
+            getUserList(){
+                this.$axios.get("/sys/user/list").then(res =>{
                     this.tableData = res.data.data
                 })
             },
@@ -181,7 +181,7 @@
                 this.resetForm('editForm')
             },
             editHandle(name) {
-                this.$axios.get('/sys/role/info/' + name).then(res => {
+                this.$axios.get('/sys/user/info/' + name).then(res => {
                     this.editForm = res.data.data
 
                     this.dialogVisible = true
@@ -190,13 +190,13 @@
             submitEditForm(formName) {
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
-                        this.$axios.post('/sys/role'+ (this.editForm.id ? "update" : "save"), this.editForm).then(res => {
+                        this.$axios.post('/sys/user'+ (this.editForm.id ? "update" : "save"), this.editForm).then(res => {
                             this.$message({
                                 showClose: true,
                                 message: '恭喜你，操作成功！',
                                 type: 'success',
                                 onClose: () => {
-                                    this.getMenuTree()
+                                    this.getUserList()
                                 }
                             });
 
@@ -211,7 +211,7 @@
             }
         },
         created(){ //为了在创建时调用
-            this.getRoleTree()
+            this.getUserList()
         },
     }
 </script>

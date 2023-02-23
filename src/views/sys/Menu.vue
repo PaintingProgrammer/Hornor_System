@@ -168,9 +168,7 @@
                         {required: true, message: '请选择状态', trigger: 'blur'}
                     ]
                 },
-                editForm: {
-
-                },
+                editForm: {},
 
             }
         },
